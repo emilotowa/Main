@@ -1,0 +1,63 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace KolekcjeZadanie
+{
+
+    class Osoba
+    {
+        public string login { get; set; }
+        public string haslo { get; set; }
+        public string nazwisko { get; set; }
+    }
+
+    class Pracownik : Osoba
+    { 
+        public string secure
+        {
+            get => (haslo);
+
+            set
+            {
+                if (value.Length < 6)
+                {
+                    throw new Exception(String.Format( "Hasło musi zawierać conajmniej 6 znaków!!!", value.Length) );
+                    throw new NullReferenceException("DUPA");
+                    throw new ArgumentOutOfRangeException("Hasło musi składać się z conajmniej 6 znaków");
+                }
+                else
+                value = haslo;
+
+            }
+        }
+
+                
+        public string departament { get; set; }
+
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            List<Pracownik> osoba1 = new List<Pracownik>()
+            {
+                new Pracownik() {login = "qwert", secure = "656604", nazwisko = "Kowalski", departament="Ksiegowość" },
+                new Pracownik() {login = "66533", secure = "123456", nazwisko = "Nowak" , departament = "zarządzanie"},
+                new Pracownik() {login = "4452fs", secure = "123456", nazwisko = "Fikus" , departament = "umniedziała"}
+
+            };
+
+            foreach (Pracownik item in osoba1)
+                Console.Write("Nazwisko:"+item.nazwisko+" "+"Departament: "+item.departament+" "+"\n");
+
+            Console.ReadKey();
+
+
+
+        }
+    }
+}
+
